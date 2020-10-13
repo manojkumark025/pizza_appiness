@@ -1,0 +1,174 @@
+
+<body style="background-color:#effaff;">
+
+
+
+        <!-- Main Wrapper
+        ======================================================================== -->
+        <div id="main-wrapper" style="background-color:#effaff;">
+
+ 
+ <!-- Page Body
+            ==================================================================== -->
+            <div class="page-body">
+
+
+                    <!-- Main Content
+                    ================================================================ -->
+                    <div class="main-content">
+                        <!-- Main Content Container -->
+                        <div class="main-content-container ">
+    
+    
+                             <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
+				  <div class="navbar-header" style="background-color:black;color:white;">
+                    
+					Pizza Delivery App
+                  </div>
+
+ 
+                <div class="navbar-collapse" style="background-color:black;color:white;">
+
+
+                    <ul class="navbar-nav mr-auto">
+						
+                        
+                    </ul>
+					
+					<ul class="navbar-nav my-lg-0">
+                       <li class="nav-item dropdown">
+                           <i class="fas fa-pizza-slice" style="font-size:65px;"></i>
+                            
+                            
+                        </li>
+                </ul>
+                   
+                </div>
+            </nav>
+ </header>
+                        
+						
+						
+		<div>	
+
+					
+			<div class="row" >
+	
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                           
+                               <h4 class="card-title text-cyan">Order List</h4>
+                                
+                                <div class="table-responsive">
+                                
+                                    <table id="demo-foo-addrow2" class="table m-t-10 table-hover no-wrap contact-list" data-page-size="10">
+                                        <thead>
+                                            <tr>
+												<th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">S.No</th>
+												<th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">Order Number</th>
+                                               <th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">Customer Name</th>
+                                                <th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">No. of Items Ordered</th>
+                                                 <th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">Total Amount</th>
+                                                 <th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">Status</th>
+                                                <th data-sort-ignore="true" class="text-cyan" style="padding-left:0px; padding-right:0px;">Change Status</th>
+                                                 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+										
+                                        <tr  *ngFor="let x of listorder;index as i"  class="footable-even">
+											<td>{{i+1}}</td>
+											<td data-toggle="modal" data-whatever="@fat" data-target="#openModal" (click)="SetDocumentPopUpData(x)"><u><a style="color: #fb9678;cursor:pointer;" >{{x.OrdNo}} </a></u></td>
+											<td>{{x.CustomerName}}</td>
+											<td><input type="text" style="font-size:14px;width:100px;min-height:20px;" class="form-control" [(ngModel)]="x.ItemsOrdered" (input)="TotalCalc(x.ItemsOrdered,x);"></td>
+											<td>{{x.TotalAmount}}</td>
+											<td><span *ngIf="x.Status==1" class="label label-purple">{{GetStatusName(x.Status)}}</span>
+											<span *ngIf="x.Status==2" class="label label-megna">{{GetStatusName(x.Status)}}</span>
+											<span *ngIf="x.Status==3" class="label label-success">{{GetStatusName(x.Status)}}</span></td>
+											<td *ngIf="x.Status==1||x.Status==2">
+											<button type="button" style="font-size:12px;" class="btn btn-primary" (click)="ChangeStatus(x.Status,x.OrdNo)" >Next Status</button></td>
+											<td *ngIf="x.Status==3">
+											<button type="button" style="font-size:12px;" class="btn btn-warning" disabled>Order Ready</button></td>
+                                       </tr>
+  
+                                    </tbody>
+                                      
+                                       
+                                    </table>
+				
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+              
+</div>
+					</div>	
+
+<div class="modal fade" id="openModal" tabindex="-1" role="dialog" aria-labelledby="openModalLabel" style="display: none;" aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content" style="top: 100px;width: 1000px; margin-left: -200px;">
+		<div class="modal-header">
+			<h4 class="modal-title" id="openModalLabel">Order Details</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+			<span aria-hidden="true" style="font-size:20px;">×</span></button></div>
+		<div class="modal-body p-l-0 p-r-0 p-t-10 p-b-0">
+			<div class="col-md-12 p-l-5 p-r-5 p-t-0 p-b-0">
+				<div class="card card-body p-l-10 p-r-10 p-t-0 p-b-0 m-b-0">
+				<h3 class="box-title text-cyan">Order# {{documentPopUpData.OrdNo}}</h3>
+					<div class="table-responsive m-b-0">
+						<table class="table m-b-0">
+							<tbody>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Customer Name</td>
+								<td style="text-align:left;">{{documentPopUpData.CustomerName}}</td>
+							</tr>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Items Name</td>
+								<td style="text-align:left;">{{documentPopUpData.ItemsName}}</td>
+							</tr>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Total Items Order</td>
+								<td style="text-align:left;">{{documentPopUpData.ItemsOrdered}}</td>
+							</tr>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Price</td>
+								<td style="text-align:left;">{{documentPopUpData.Price}}</td>
+							</tr>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Total Price</td>
+								<td style="text-align:left;">{{documentPopUpData.TotalAmount}}</td>
+							</tr>
+							<tr>
+								<td class="text-cyan p-l-5 p-r-5" style="width:200px;">
+								Delivery Address</td>
+								<td style="text-align:left;">{{documentPopUpData.Address}}</td>
+							</tr>
+						</tbody></table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-grey" data-dismiss="modal" style="font-size:15px;">
+			Close</button></div>
+	</div>
+</div>
+</div>
+
+
+				</div><!-- /End Main Content Container -->
+                    </div><!-- /End Main Content -->
+    
+    
+                </div><!-- /End Page Body -->
+    
+                </div>
+                </body>
