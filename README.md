@@ -6,22 +6,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# pizza_appiness
 
-## Build
+Here I have created new project pizza
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+When you run the app means first it will list the details which was ordered by customers
+It displays Customer name,ItemsOrdered,Total Amount,status and button to change the status
 
-## Running unit tests
+ItemsOrdered column is editable because whether the customer can need extra or they can reduce the items
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+TotalAmount will calculated according to it
 
-## Running end-to-end tests
+And at last change status button, if you click the Next status button First one is Order Received, Second is Preparing and last one is Ready to Serve,
+if the order has been changed you can click the button from First status it will change to Second one and from second to third and if it reach the third one the button will change to Order ready and it will be disabled
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+I've created a JSON file and I have imported the sample data and button action will run and if you refresh the application it will change according to the JSON file were I'm not going to save in database and fetch from it, it sample data and all the actions will done, if we have stored in database means we can show the original data of the statuses
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+And after that order is ready to serve, in listview there is Order Number view you can click and see where it is going to deliver and after that we can close that window 
